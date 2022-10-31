@@ -153,7 +153,8 @@
 
     // Function to show the indicator details
     function handleTargetDetails(){
-        showIndicator = this.getAttribute('targetCode')            
+        showIndicator = this.getAttribute('targetCode')         
+console.log(showIndicator)   
         const targetCode = this.getAttribute('targetCode')
     };
 
@@ -290,7 +291,7 @@
                         <img class = 'goal-icon' alt="SDG Goal icon" src = {`./static/img/the-global-goals-goals-and-targets/goal-${$ui.state.bySection.compose.sdg}/GOAL_${$ui.state.bySection.compose.sdg}_PRIMARY_ICON/GOAL_${$ui.state.bySection.compose.sdg}_SVG/TheGlobalGoals_Icons_Color_Goal_${$ui.state.bySection.compose.sdg}.svg`} >
                         {:else}
                         <div class ="target-tile-container">
-                            <img class = 'target-tile' alt="SDG target icon" src = {`./static/img/the-global-goals-goals-and-targets/goal-${$ui.state.bySection.compose.sdg}/GOAL_${$ui.state.bySection.compose.sdg}_TARGETS/GOAL_${$ui.state.bySection.compose.sdg}_TARGETS_SVG/GOAL_${$ui.state.bySection.compose.sdg}_TARGET_${showIndicator}.svg`}>
+                            <img class = 'target-tile' alt="SDG target icon" src = {`./static/img/the-global-goals-goals-and-targets/goal-${$ui.state.bySection.compose.sdg}/GOAL_${$ui.state.bySection.compose.sdg}_TARGETS/GOAL_${$ui.state.bySection.compose.sdg}_TARGETS_SVG/GOAL_${$ui.state.bySection.compose.sdg}_TARGET_${showIndicator.replace(".", "-")}.svg`}>
                         </div>
                         {/if}
                     </div> 
@@ -338,7 +339,7 @@
                                 <th class = 'target-header-container' colspan = {target[1].indicatorList.length} targetCode ={target[0]}
                                     on:click={handleTargetDetails} on:keydown={handleTargetDetails}>
                                     <div class ='target-icon-container'>
-                                        <img class = 'target-icon' alt="SDG target icon" src = {`./static/img/the-global-goals-goals-and-targets/goal-${$ui.state.bySection.compose.sdg}/GOAL_${$ui.state.bySection.compose.sdg}_TARGETS/GOAL_${$ui.state.bySection.compose.sdg}_TARGETS_SVG/GOAL_${$ui.state.bySection.compose.sdg}_TARGET_${target[0]}.svg`}>
+                                        <img class = 'target-icon' alt="SDG target icon" src = {`./static/img/the-global-goals-goals-and-targets/goal-${$ui.state.bySection.compose.sdg}/GOAL_${$ui.state.bySection.compose.sdg}_TARGETS/GOAL_${$ui.state.bySection.compose.sdg}_TARGETS_SVG/GOAL_${$ui.state.bySection.compose.sdg}_TARGET_${target[0].replace(".", "-") }.svg`}>
                                     </div>
                                     <div class = 'target-header' >{@html target[0]}</div>
                                 </th>
