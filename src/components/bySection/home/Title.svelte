@@ -8,11 +8,9 @@
 <!-- HTML COMPONENT MARKUP-->
 <section id = "home-title"  class = "subsection">
     <div class = "title-content-wrapper">
-        <h1 class ="main-title">
-            Holocene
-        </h1>
+        <h1 class ="main-title">Holocene</h1>
         <div class = "subtitle">
-            An instrument for measuring the real-world facets of sustainable development
+            An instrument for composing real-world facets of sustainable development
         </div>
         <div class = "down-button-container">
             <DownArrow handler={changeSubsection} target="about" section="home"/>
