@@ -2,6 +2,7 @@
 <script>
     import CityScape            from '../../vis/CityScape.svelte'
     import DownArrow            from '../../shared/DownArrow.svelte'
+    import SdgDivider           from '../../shared/SdgDivider.svelte';
     import { ui }               from '../../../data/stores/ui.js'
     import { data }             from '../../../data/stores/data.js'
     import { changeSubsection }  from '../../../lib/utils/nav.js';
@@ -26,6 +27,7 @@
 <section id ="beyond" class = "subsection">
     <div class = "subsection-content-wrapper">
         <h1>Beyond Holocene</h1>
+        <SdgDivider/>
         <p>This prototype of <i>Holocene</i> was conceived and hacked together in couple of weeks during October of 2022. On the surface it might seem a bit bare bones but there is a purposeful design rationale and (hopeful) short term development roadmap for it. So it has been programmed with some care and thought!
         Here are a few thoughts about <i>Holocene</i>, with a  little glimpse into the future at the end...    
         </p>
@@ -83,15 +85,6 @@
             <DownArrow handler={changeSubsection} section="explore" target="holodeck"/>
         </div>
 
-    </div>
-
-
-
-
-    <div class = "bg-container">
-        {#if $ui.state.vis.cityScape.render}
-        <!-- <CityScape/> -->
-        {/if}
     </div>
 </section>
 

@@ -2,6 +2,7 @@
 <script>
     import CityScape            from '../../vis/CityScape.svelte'
     import DownArrow            from '../../shared/DownArrow.svelte'
+    import SdgDivider            from '../../shared/SdgDivider.svelte'
     import UpArrow              from '../../shared/UpArrow.svelte'
     import { ui }               from '../../../data/stores/ui.js'
     import { data }             from '../../../data/stores/data.js'
@@ -28,6 +29,7 @@
 <section id ="holodeck" class = "subsection">
     <div class = "subsection-content-wrapper">
         <h1>The Holodeck</h1>
+<SdgDivider/>
             <p>The <i><em>Holodeck</em></i> uses OSM data to construct a potentially explorable and interactive 3D version of {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} a city {/if} a city in your browser. And ok - there is the brilliant <a href="https://osmbuildings.org/" target="_blank">OSM Buildings project</a> that does something similar, however we believe that by having a fully customisable miniature world unlocks enormous potential for creative and powerful data visualisation and storytelling. We see the <i>Holodeck</i> like its namesake &mdash; as <em>a platform for imagination</em>. And we think imagination is sorely needed for humanity to achieve the Sustainable Development Goals.</p>
 
         <div id = "oss4sdg" class="collapse__header" type="button" 
@@ -53,7 +55,9 @@
 <section id ="holodeck-model" class = "subsection">
     {#if $ui.state.vis.cityScape.render}
     <div class = "holodeck-controls-container">
-        <UpArrow handler={changeSubsection} section="explore" target="holodeck"/>
+        <div class="up-arrow-container"><UpArrow handler={changeSubsection} section="explore" target="holodeck"/>
+        </div>
+        <h2 class = "holodeck-header">holocene</h2>
     </div>
     <div class = "canvas-container">
         <CityScape/>
@@ -70,7 +74,7 @@
         min-height:             100vh;
         padding-bottom:      0;
     }
-    h3{
+    h1, h3{
         margin-block-end:   0;
     }
 
@@ -86,6 +90,26 @@
         margin-top:             2.5vh;
         grid-area:              1 / 1 / 2 / 2;
         z-index:                10   ;
+        display:                grid;
+        grid-template-columns:  1fr 1fr 1fr;
+        grid-template-rows:     auto;
+        width:                  100%;
+
+    }
+    .up-arrow-container ,
+    .holodeck-header{
+        grid-area:              1 / 2 / 2 / 3;
+        display:                flex;
+        align-content:          center;
+        justify-content:        center;
+    }
+    .holodeck-header{
+        pointer-events:         none;
+        margin-block-start:       0;
+        margin-block-end:       0;
+        align-content:          end;
+        font-size:              300%;
+        letter-spacing:         0.25vw;
     }
 
     .note{
