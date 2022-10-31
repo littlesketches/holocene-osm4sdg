@@ -15,7 +15,6 @@ export {
     getTagKeyStats,
     getkeyDefintion, 
     keyCountList, 
-    keyDefs
 }
 
 
@@ -80,27 +79,3 @@ const keyCountList = [
     'railway',
     'public',
 ]
-// Other useuful keys
-// start_date
-// lit
-// bicycle
-// railway
-
-const keyDefs = {
-    amenity:    await getkeyDefintion('amenity'),
-    surface:    await getkeyDefintion('surface'),
-    building:   await getkeyDefintion('building'),
-    highway:    await getkeyDefintion('highway'),
-    natural:    await getkeyDefintion('natural'),
-    landuse:    await getkeyDefintion('landuse'),
-    waterway:    await getkeyDefintion('waterway'),
-    service:    await getkeyDefintion('service'),
-    leisure:    await getkeyDefintion('leisure'),
-    railway:    await getkeyDefintion('railway'),
-    public:    await getkeyDefintion('railway'),
-}
-
-
-console.log('----TAGINFO.JS  TESTING ')
-console.log({keyDefs})
-
