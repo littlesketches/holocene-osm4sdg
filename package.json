@@ -17,6 +17,7 @@
     "d3": "^7.6.1",
     "dat.gui": "^0.7.9",
     "geolib": "^3.3.3",
+    "gh-pages": "^4.0.0",
     "leaflet": "^1.9.2",
     "showdown": "^2.1.0",
     "svelte-material-icons": "^2.0.4",
