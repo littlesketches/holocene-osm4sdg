@@ -29,8 +29,8 @@
 <section id ="holodeck" class = "subsection">
     <div class = "subsection-content-wrapper">
         <h1>The Holodeck</h1>
-<SdgDivider/>
-            <p>The <i><em>Holodeck</em></i> uses OSM data to construct a potentially explorable and interactive 3D version of {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} a city {/if} a city in your browser. And ok - there is the brilliant <a href="https://osmbuildings.org/" target="_blank">OSM Buildings project</a> that does something similar, however we believe that by having a fully customisable miniature world unlocks enormous potential for creative and powerful data visualisation and storytelling. We see the <i>Holodeck</i> like its namesake &mdash; as <em>a platform for imagination</em>. And we think imagination is sorely needed for humanity to achieve the Sustainable Development Goals.</p>
+        <SdgDivider/>
+        <p>The <i><em>Holodeck</em></i> uses OSM data to construct a potentially explorable and interactive 3D version of {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} a city {/if} a city in your browser. And ok - there is the brilliant <a href="https://osmbuildings.org/" target="_blank">OSM Buildings project</a> that does something similar, however we believe that by having a fully customisable miniature world unlocks enormous potential for creative and powerful data visualisation and storytelling. We see the <i>Holodeck</i> like its namesake &mdash; as <em>a platform for imagination</em>. And we think imagination is sorely needed for humanity to achieve the Sustainable Development Goals.</p>
 
         <div id = "oss4sdg" class="collapse__header" type="button" 
             class:selected="{paneVisbility.oss4sdg}" on:click={togglePane}  on:keydown={togglePane}>

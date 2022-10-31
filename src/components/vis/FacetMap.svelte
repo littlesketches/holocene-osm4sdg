@@ -449,7 +449,7 @@
                         <rect class = 'target-node' height = {layout.targetHeight} width = {layout.targetWidth} x = {10} />
                         <!-- <g class = 'target-label-wrapper' target={targetNo} style = 'transform:translate({0}px, {0}px)'></g> -->
                         <image class = 'target-tile'  x = {0} height= {layout.targetHeight}  
-                            xlink:href = './static/img/the-global-goals-goals-and-targets/goal-{goalNo}/GOAL_{goalNo}_TARGETS/GOAL_{goalNo}_TARGETS_SVG/GOAL_{goalNo}_TARGET_{targetNo.toUpperCase().replace('.', )}.svg'/>
+                            xlink:href = './static/img/the-global-goals-goals-and-targets/goal-{goalNo}/GOAL_{goalNo}_TARGETS/GOAL_{goalNo}_TARGETS_SVG/GOAL_{goalNo}_TARGET_{targetNo.toUpperCase().replace('.','-' )}.svg'/>
 
                         <!-- FOR EACH INDICATOR-->
                         {#each Object.entries(targetObj.indicator) as [indicatorNo, indicatorObj], k}    
