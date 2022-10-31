@@ -435,7 +435,7 @@
                     xlink:href = './static/img/the-global-goals-goals-and-targets/goal-{goalNo}/GOAL_{goalNo}_PRIMARY_ICON/GOAL_{goalNo}_SVG/TheGlobalGoals_Icons_Color_Goal_{goalNo}.svg'/>
                 {:else}
                 <image class = 'target-tile'  x = {dims.margin.right}  y= {dims.margin.right} width= {layout.goalWidth}  
-                    xlink:href = './static/img/the-global-goals-goals-and-targets/goal-{$ui.state.bySection.explore.sdg}/GOAL_{$ui.state.bySection.explore.sdg}_TARGETS/GOAL_{$ui.state.bySection.explore.sdg}_TARGETS_SVG/GOAL_{$ui.state.bySection.explore.sdg}_TARGET_{showTarget.replace('.', '-')}.svg'/>
+                    xlink:href = './static/img/the-global-goals-goals-and-targets/goal-{$ui.state.bySection.explore.sdg}/GOAL_{$ui.state.bySection.explore.sdg}_TARGETS/GOAL_{$ui.state.bySection.explore.sdg}_TARGETS_SVG/GOAL_{$ui.state.bySection.explore.sdg}_TARGET_{showTarget.toUpperCase().replace('.', '-')}.svg'/>
                 {/if}
                 <g class = "goal-label-wrapper" class:hidden={showTarget} style = 'transform:translate({dims.margin.right}px, {layout.goalWidth + dims.margin.right * 3}px)'> </g>
 
@@ -449,7 +449,7 @@
                         <rect class = 'target-node' height = {layout.targetHeight} width = {layout.targetWidth} x = {10} />
                         <!-- <g class = 'target-label-wrapper' target={targetNo} style = 'transform:translate({0}px, {0}px)'></g> -->
                         <image class = 'target-tile'  x = {0} height= {layout.targetHeight}  
-                            xlink:href = './static/img/the-global-goals-goals-and-targets/goal-{goalNo}/GOAL_{goalNo}_TARGETS/GOAL_{goalNo}_TARGETS_SVG/GOAL_{goalNo}_TARGET_{targetNo.replace('.', '-')}.svg'/>
+                            xlink:href = './static/img/the-global-goals-goals-and-targets/goal-{goalNo}/GOAL_{goalNo}_TARGETS/GOAL_{goalNo}_TARGETS_SVG/GOAL_{goalNo}_TARGET_{targetNo.toUpperCase().replace('.', )}.svg'/>
 
                         <!-- FOR EACH INDICATOR-->
                         {#each Object.entries(targetObj.indicator) as [indicatorNo, indicatorObj], k}    
