@@ -5,7 +5,7 @@ import { writable } from 'svelte/store';
 export const ui = writable({
 
     view: {          // Navigation state
-        section:               'explore',      // Name of visible section ["home", "compose", "explore"]
+        section:               'home',      // Name of visible section ["home", "compose", "explore"]
         subsection:            'title',        // UNUSED
         show: {
             modal:              false,      // Main (nearly) full screen information modal 
