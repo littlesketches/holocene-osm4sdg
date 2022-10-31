@@ -20,6 +20,7 @@
     import CloseThick           from "svelte-material-icons/CloseThick.svelte";
     import ChevronUp            from "svelte-material-icons/ChevronUp.svelte";
     import ChevronDown          from "svelte-material-icons/ChevronDown.svelte";
+    import Facets from '../explore/Facets.svelte';
 
     const totalTargets = sum(Object.values($schema.sdgs).map(d => d.targetList.length))
     const totalIndicators =  sum(Object.values($schema.sdgs).map(d => Object.values(d.target)).flat().map(d => d.indicatorList.length))
@@ -177,7 +178,7 @@
         <div id = "curate-1" class ='curate-section'>
             <h1>Curate OSMxSDG connections</h1>
             <SdgDivider/>
-            <p>In <i>Holocene</i> we create connections between data to better understand the world around us. Here you can read more about how that's done in these sections; or if you already know what you're doing, you can move onto setup Facets and generate data!</p>
+            <p>In <i>Holocene</i> we create connections between data to better understand the world around us. You can read more about how that's done in these sections; or if you already know what you're doing, you can move onto setup Facets and generate data!</p>
 
             <!-- OSMxSDG DATA CONTEXT-->
             <h2 class = 'header'>What data matters?</h2>
@@ -188,7 +189,7 @@
             </div>
             {#if paneVisbility.dataContext}
             <div class = "collapse__body"  transition:slide>    
-                <p>OpenStreetMap contains a lot of data. This is data that has been generated, tagged and organised by millions of human contributors. It is a treasure trove but it can be a bit messy and intimidating to get started with. As OSM puts it:</p>
+                <p>OpenStreetMap contains a lot of data. This is data that has been generated, tagged and organised by millions of human contributors. It is a real treasure trove but it can be bit messy and intimidating to get started with. As OSM puts it:</p>
                 <blockquote>
                     OpenStreetMap uses tags to add meaning to geographic objects. There is no fixed list of those tags. New tags can be invented and used as needed. Everybody can come up with a new tag and add it to new or existing objects. This makes OpenStreetMap enormously flexible, but sometimes also a bit hard to work with. 
                     <div class = "source">&mdash; from <a href ="https://taginfo.openstreetmap.org/about" target = "_blanks">tagInfo.openstreetmap.org</a></div>
@@ -206,9 +207,11 @@
             </div>
             {#if paneVisbility.facetIntroduction}
             <div class = "collapse__body"  transition:slide>
-                <p>There are many challenges to interpreting what OSM data really <i>means</i> in the context of a particular city or community. For a start, although there are billions of objects mapped in OSM, the overall coverage of mapping varies between locations: you're more likely to find more objects, with more detailed tagging information in populated cities (where there are more mappers!); or where community mapping projects have taken place. So much like the SDGs (and their myriad of targets and indicators), there is no magical data measure - or set of measures - that link OSM data to SDGs, for everywhere in the world. <em>What we need a more flexible approach that recognises that we're trying to solve a messy human made problem, with messy human made data.</em>
+                <p>There are many challenges to interpreting what OSM data really <i>means</i> in the context of a particular city or community. For a start, although there are billions of objects mapped in OSM, the overall coverage of mapping varies between locations: you're more likely to find more objects, with more detailed tagging information in populated cities (where there are more mappers!); or where community mapping projects have taken place. and their myriad of targets and indicators, there are no magical data measures or ways to link OSM data to SDGs, for everywhere in the world. <em>What we need is a more flexible approach that recognises that we're solving our messy, human made problem, with messy human made data.</em>
                 </p>
-                <p>In Holocene, we tackle this problem with what we call <em>'Facets'</em>: these are just groups of objects sharing one or more OSM tags. Its a simple idea: create a customisable count of objects that share any (set of) OSM-tagged characteristics - and link that 'Facet' to any of the SDG indicators (and their parent targets and goals). Providing context for measuring progress and benchmarking are another challenge - we'll get to that shortly - but on the surface we can give Facets a friendly, human-readable description and title. Under the surface, facets are powered by the OSM Overpass query language which means that they can be extremely customisable and powerful.
+                <p>In Holocene, we tackle this problem with what we call <em>'Facets'</em>: these are just groups of objects sharing one or more OSM tags. Its a simple idea: create a customisable count of objects that share any set of OSM-tagged characteristics - and link that Facet to any of the SDG indicators (and their parent targets and goals). Facets can range from the very basic to very specific or sophisticated, to meet the needs of a city. Under the surface, Facets are powered by the OSM Overpass query language which means that they can be extremely customisable and powerful.
+                </p>
+                <p>Providing context for measuring and progress is another challenge - and we'll get to that shortly - but on the surface we can give Facets a friendly, human-readable description and title and quantify the with a basic 'score' (i.e. count).
                 </p>
             </div>
             {/if}
@@ -222,9 +225,9 @@
             </div>
             {#if paneVisbility.facetComposer}
             <div class = "collapse__body"  transition:slide>    
-                <p>Facets are a simple concept but they can be tricky to compose and configure. This is mainly because your choices need to be translated into the Overpass query language in order to get the OSM data we need. A more sophisticated and potentially a visual Facet composer is imagined for <i>Holocene</i> in the future, however this is significant design challenge!
+                <p>Facets are a simple concept but they can be tricky to setup and configure. This is mainly because your choices need to be translated into the Overpass query language, in order to get the OSM data we need. The Facet Composer is the interface we've designed to help you setup Facets but its not (yet) perfect. A more sophisticated Facet Composer is imagined for <i>Holocene</i> in the future, however this is a significant design challenge!
                 </p>
-                <p>For now, <i>Holocene</i> helps you get started by providing some default 'presets' and sets of links to SDG indicators - that we'll call 'patch' -  that you can use to get started. This starter 'patch' is designed to help you get going and provides a working example you cam edit and build on. And if you're wondering, yes there is a connection here to the terminology used in modular electronic music synthesizers!. 
+                <p>For now, <i>Holocene</i> helps you get started by providing some default 'presets' and sets of links to SDG indicators, that we'll call 'patch'. These starter 'patches' are designed to help you get going and provide working examples you cam edit and build on. If you're wondering, yes, we're borrowing this terminology and approach from the world of modular electronic music synthesizers and instruments! 
                 </p>
             </div>
             {/if}
@@ -239,9 +242,9 @@
         </div>
         {#if paneVisbility.facetTableHowTo}
         <div class = "collapse__body"  transition:slide>    
-            <p>The Facet Composer represents each facet in a row. Along that row, each coloured circle indicates where an SDG indicator has been mapped to a Facet. Filled circles indicate where a Facet has a positive relationship and moves in the same direction as a indicator: a higher Facet 'score' helps achieve the mapped SDG. Unfilled circled that have a coloured outline are the opposite: a higher Facet score is detrimental to achieving the linked SDG. Small circles with a light grey outlines mean that there is no link between Facet and indicator.</p>
+            <p>The Facet Composer represents each facet as a row. Along that row, each coloured circle indicates where an SDG indicator has been mapped to a Facet. Filled circles indicate where a Facet has a positive relationship and moves in the same direction as a indicator: a higher Facet 'score' helps to achieve the mapped SDG. Unfilled circled that have a coloured outline are the opposite: a higher Facet score is detrimental to achieving the linked SDG. Small circles with a light grey outlines mean that there is no link between Facet and indicator.</p>
             <p>
-            All mapped circles come in two sizes which you can think of and use to indicate a small or large impact or linkage. To edit these mappings, simple tap on the arrow heads above and below each circle.</p> 
+            All mapped circles come in two sizes which you can and use to indicate a small or large impact or linkage. To edit these mappings, simple tap on the arrow heads above and below each circle.</p> 
         </div>
         {/if}
     </div>

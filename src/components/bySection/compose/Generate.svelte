@@ -167,10 +167,10 @@
     <div class = "subsection-content-wrapper">
         <h1>Generate data</h1>
         {#if !$data.osm.selected.areaNode}
-        <p><i>Holocene</i> will query the <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a> to gather Facets data. However before this can happen, you'll need to select a city using the <i>Locate</i> section above. A preview of of the data query options is shown below. 
+        <p><i>Holocene</i> will query the <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a> to gather Facet data. However before this can happen, you'll need to select a city using the <i>Locate</i> section above. A preview of of the data query options is shown below. 
         </p>
         {:else}
-        <p>We're now ready to grab some data for {$data.osm.selected.areaName}! <i>Holocene</i> retrieves OSM via the <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a>. This is a wonderful open source service but it can be quite fickle! <i>Holocene</i> does its best to queue as series of smaller requests, but even this can result in some errors on the API side (...hopefully this can be improved in the future!). If if looks like a query is hanging <span class = "reset-queries" role="button" on:click={handleResetOptions} on:keydown={handleResetOptions}>click here to reset</span> the query options</p>
+        <p>We're now ready to grab some data for {$data.osm.selected.areaName}! <i>Holocene</i> retrieves OSM via the <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a>. This is a wonderful open source service but it can be quite fickle! <i>Holocene</i> does its best to queue as series of smaller requests (and not make too many at once), but this can still result in some errors on the API side (...hopefully this can be improved in the future!). If it looks like a query is hanging <span class = "reset-queries" role="button" on:click={handleResetOptions} on:keydown={handleResetOptions}>click here to reset</span> the query options</p>
         {/if}
 
         <div class = 'query-option-container'> 
@@ -189,7 +189,7 @@
                             <div>Data retrieved!</div>
                         </div>
                         <div class ="data-description">
-                            <p> Armed With the Facets data retrieved you can now visit the <i>Explore</i> section and see your Facet "scores" for {$data.osm.selected.areaName}.
+                            <p> Armed With the Facets data retrieved you can now visit the <i>Explore</i> section and see the Facet "scores" for {$data.osm.selected.areaName}.
                             </p>
                         </div>  
                     {/if}
@@ -199,7 +199,7 @@
                         {#if !$ui.data.loadingState.benchmarks}
                         <button class = "data-button"on:click={getFacetBenchmarkData}>Get Facet benchmark data</button>{:else} <Loader/>{/if}
                         <div class ="data-description">
-                            <p>This query will retrieve Facet data for some other locations to provide useful comparisons. The benchmarking feature is discussed in the <i>Explore</i> section. For now, a default of 5 other benchmark cities are requested, so this query should take about x5 the time of the "Get Facet data" query!.
+                            <p>This query will retrieve Facet data for  other locations to provide comparison data. The benchmarking feature is discussed in the <i>Explore</i> section. For now, a default of 4 other benchmark cities are requested, so this query should take about x4 the time of the "Get Facet data" query!.
                             </p>
                         </div>
                     {:else}
@@ -208,7 +208,7 @@
                             <div>Data retrieved!</div>
                         </div>
                         <div class ="data-description">
-                            <p>Armed with the Facets benchmarks data retrieved you can now visit the <i>Explore</i> section and see how Facet "scores" for {$data.osm.selected.areaName} compare to benchmark locations.
+                            <p>Armed with the Facet benchmarks data, you can now visit the <i>Explore</i> section and see how Facet "scores" for {$data.osm.selected.areaName} compare to benchmark locations.
                             </p>
                         </div>  
                     {/if}
@@ -219,14 +219,14 @@
                     {#if !$ui.data.responseState.buildings}
                         {#if !$ui.data.loadingState.buildings}
                         <button class = "data-button" on:click={() => getOsmBuildingsData($data.osm.selected.areaName, $data.osm.selected.location.geom.overpassBounds)}>Get geometry data</button>{:else} <Loader/>{/if}
-                        <div class ="data-description">This query retrieves geometry data for buildings and road. This feature is also discussed in more detail in the <i>Explore</i> section. It's just one query that should take anywhere from 5 to 60 seconds, depending on the size of the city.</div>
+                        <div class ="data-description">This query retrieves geometry data for buildings and roads. This feature is also discussed in more detail in the <i>Explore</i> section. It's just one query that can take anywhere from 5 to 60 seconds, depending on the size of the city.</div>
                     {:else}
                          <div class ="data-response">
                             <div class = "icon"><CheckOutline/></div>
                             <div>Data retrieved!</div>
                         </div>
                         <div class ="data-description">
-                            <p>Building geometry data let's us build some really awesome representations of{$data.osm.selected.areaName} that might provide new and insightful ways to see and explore Facets and their connections to sustainable development all around us. These speculative ideas are discussed more detail in the <i>Explore</i> section.
+                            <p>Building geometry data let's us build some really awesome representations of {$data.osm.selected.areaName} that might provide new and insightful ways to see and explore Facets and their connections to sustainable development all around us. These  ideas are discussed more at the conclusion of the <i>Explore</i> section.
                             </p>
                         </div>  
                     {/if}
@@ -235,7 +235,7 @@
                     {#if !$ui.data.responseState.facetHistory}
                         {#if !$ui.data.loadingState.facetHistory}
                         <button class = "data-button"on:click={getFacetHistoricalData}>Get Facet historical data</button>{:else}<Loader/>  {/if}
-                        <div class ="data-description">This query will retrieve an historical series for each Facet. <em>Warning</em> the Overpass API is not optimised for querying historical datasets. It works, but is is really, <i>really</i> slow - about 5 seconds per query, and we need to run every query for every date we want, for every facet - so it will take a few minutes there's a high chance it will error out :( You can however, still use the <i>Explore</i> section without this data (or even while the query is running)</div>
+                        <div class ="data-description">This query will retrieve a historical series for each Facet. <em>Warning</em> the Overpass API is not optimised for querying historical datasets. It works, but it is really, <i>really</i> slow. It often takes more than 5 seconds per query, and we need to run every query for every date we want, for every Facet - so this one will take a few minutes and there's a high chance it will error out :( You can however, still use the <i>Explore</i> section without this data (or even while the query is running)</div>
                     {:else}
                          <div class ="data-response">
                             <div class = "icon"><CheckOutline/></div>

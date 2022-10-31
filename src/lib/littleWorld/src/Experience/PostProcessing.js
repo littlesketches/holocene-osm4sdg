@@ -60,8 +60,6 @@ export default class PostProcessing{
         // renderPass.clear = true
         this.instance.addPass(renderPass)
 
-        // console.log("Render target:", renderTarget)
-        // console.log("Render pass:", renderPass)
     }
 
     // Resize an update methods
@@ -126,8 +124,8 @@ export default class PostProcessing{
         this.instance.addPass(this.effects.unrealBloomPass)
 
         // Bloom settings and debug controls
-        this.effects.unrealBloomPass.strength = 1.3
-        this.effects.unrealBloomPass.radius = 1
+        this.effects.unrealBloomPass.strength = 0.4
+        this.effects.unrealBloomPass.radius = 0.3
         this.effects.unrealBloomPass.threshold = 0.6
 
         if(this.ref.debug.active){
@@ -152,12 +150,12 @@ export default class PostProcessing{
     addRgbHalftonePass(){
         const params = {
             shape: 1,
-            radius: 4,
+            radius: 8,
             rotateR: Math.PI / 12,
             rotateB: Math.PI / 12 * 2,
             rotateG: Math.PI / 12 * 3,
             scatter: 0,
-            blending: 1,
+            blending: 0.2,
             blendingMode: 1,
             greyscale: false,
             disable: false
@@ -216,7 +214,6 @@ export default class PostProcessing{
     addFilmPass(){
         this.effects.filmPass = new FilmPass()
         this.effects.filmPass.enabled = false
-
         this.instance.addPass(this.effects.filmPass)
         if(this.ref.debug.active){
             const folder =this.debugFolder.addFolder('Film') 

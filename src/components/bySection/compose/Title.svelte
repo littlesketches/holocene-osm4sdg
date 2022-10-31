@@ -13,8 +13,8 @@
     </div>
     <div class = "title-container">
         <div>
-            <h1>Connect what matters</h1>
-            <p>Use this section to <em>locate</em> the city you're interested in, and <em>curate</em> how OSM data might help you better understand how the community is progressing towards the SDGs, and challenges they might be facing. 
+            <h1>Connecting what matters</h1>
+            <p>Use this section to <em>locate</em> the city you're interested in, and to <em>curate</em> how OSM data might help you better understand how the community is progressing towards the SDGs, and challenges they might be facing. 
             </p>
         </div>
     </div>

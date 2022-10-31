@@ -40,7 +40,16 @@ class DefaultBenchmarks{
                 country:    'Japan',
                 node:       963792 
             }, 
-
+            {
+                areaName:   'Manhattan',
+                country:    'United States',
+                node:       8398124
+            }, 
+            {
+                areaName:   'Beirut Governorate',
+                country:    'Lebanons',
+                node:       316552
+            }
         ]
 
     }

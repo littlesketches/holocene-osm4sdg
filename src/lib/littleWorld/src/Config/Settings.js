@@ -8,7 +8,7 @@ const params = new URLSearchParams(window.location.search)
 export default class Settings {
 
     constructor(osmData){
-        console.log(osmData)
+
         const area = osmData.data.area / 1000000
 
         this.settings = {              // Global object for settings, references (and state)   
@@ -27,7 +27,7 @@ export default class Settings {
                 ambientLight: {
                     sky:            '#FFFFFF',
                     ground:         '#FFFFFF',  
-                    intensity:      0.5
+                    intensity:      1.0
                 },
                 directionalLight: {
                     color:          '#FFFFFF',

@@ -27,7 +27,7 @@
 <section id ="benchmark" class = "subsection">
     <div class = "subsection-content-wrapper">
         <h1>Facet benchmarking</h1>
-        <p>This table compares Facet scores for {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} a selected city {/if}for against a handful of other cities. Here, Facet scores (i.e. counts of OSM objects) are <i>normalised</i> by dividing the raw score by the estimated physical area of each city. 
+        <p>This table compares Facet scores for {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} a selected city {/if} against a handful of other cities. Here, Facet scores (i.e. counts of OSM objects) are <i>normalised</i> by dividing the raw score by the estimated physical area of each city. 
         </p>
 
         <div id = "whyBenchmark" class="collapse__header" type="button" 
@@ -37,11 +37,11 @@
         </div>
         {#if paneVisbility.whyBenchmark}
         <div class = "collapse__body"  transition:slide>    
-            <p>Facets do provide tangible quantitative measures, however data without context is pretty meaningless. Tracking Facets over time is useful for tracking progress in a location over time, but can also be interesting to compare Facets across different cities (and perhaps over time as well).
+            <p>Facets do provide tangible quantitative measures, however data without context is pretty meaningless. Tracking Facets over time is useful for understanding progress in a location. But can also be interesting to compare Facets across different cities. This is where benchmark cities come in.
             </p>
-            <p>These benchmarking cities have been (semi) randomly chosen to demonstrate how benchmarks work in <i>Holocen</i>. In the future you'll be able to search for and choose your own benchmark cities, and potentially choose different denominator for normalisation (e.g. population, where it exists in OSM or elsewhere). 
+            <p>These benchmarking cities have been (semi) randomly chosen to demonstrate how this feature works in <i>Holocen</i>. In the future you'll be able to search for and choose your own benchmark cities, and potentially choose different denominator for normalisation (e.g. population, where it exists in OSM or elsewhere). 
             </p>
-            <p>Benchmark facet scores are shown with a background circle that represents the relative difference between {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} a selected city {/if} and the score for the benchmark. These circles are colour coded to let you know where a benchmark score is above (green) or below (red) the relative score {#if $data.osm.selected.areaName} in {$data.osm.selected.areaName} {:else} in a selected city {/if}.
+            <p>Benchmark facet scores are shown with a background circle that represents the relative difference between {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} a selected city {/if} and the score for the benchmark. These circles are colour coded to let you know where a benchmark score is above (green) or below (red) the relative score {#if $data.osm.selected.areaName} in {$data.osm.selected.areaName} {:else} in the selected city {/if}.
             </p>
         </div>
         {/if}
@@ -126,10 +126,10 @@
                 </tbody>
             </table>
             {:else}
-            <div class = 'note'>Please note that benchmark data needs to be generated for the current Facets in the <i>Compose</i> section before Facet benchmarking can be generated</div>
+            <div class = 'note'>Please note that benchmark data needs to be generated for the current Facets in the <i>Compose</i> section before benchmarks can be generated</div>
             {/if}
         {:else}
-        <div class = 'note'>Please note that a city needs to be located in the <i>Compose</i> section before the Facet benchmarking can be generated</div>
+        <div class = 'note'>Please note that a city needs to be located in the <i>Compose</i> section before the Facet benchmarks can be generated</div>
         {/if}
     </div>
 

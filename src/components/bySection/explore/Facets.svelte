@@ -34,7 +34,7 @@
          <p>WHen Facets are set up, this interactive visualisation will show an overview of the volumes and trends for modelled Facets.
         </p>
         {:else}
-        <p>This interactive visualisation is desgined to provide an overview of the volumes and trends for {#if $schema.data.osm.facets.length > 1} all {$schema.data.osm.facets.length} configured Facets {:else} the one configured data facet{/if}, together the connections between Facets and each SDG, target and indicator. 
+        <p>This interactive visualisation is designed to provide an overview of the volumes and trends for {#if $schema.data.osm.facets.length > 1} all {$schema.data.osm.facets.length} configured Facets {:else} the one configured data facet{/if}, together with the connections between Facets and each SDG, target and indicator. 
         </p>    
         <p class = "note">Please note that Facet data visualisation components require a location to be selected and for data be retrieved from the <i>Compose</i> section.</p>
         {/if}
@@ -45,13 +45,13 @@
         </div>
         {#if paneVisbility.howToRead}
         <div class = "collapse__body"  transition:slide>    
-            <p>This graphic is designed for larger screens - there's a quite a bit going on! Each Facet is presented as on the left in a 'pill' that shows summary graphs for: the count of how many objects (by types of <a class = 'link node' href='https://wiki.openstreetmap.org/wiki/Node'>nodes</a>, <a class = 'link way' href="https://wiki.openstreetmap.org/wiki/Way">ways</a> and <a class = 'link relation' href="https://wiki.openstreetmap.org/wiki/Relation">relations</a>) are currently in OSM{#if $data.osm.selected.areaName} in {$data.osm.selected.areaName}{:else}{#if yearsAgoLabel}; together with a trendline over the past {yearsAgoLabel}.{:else}.{/if}
+            <p>This graphic is designed for larger screens - there's a quite a bit going on! Each Facet is presented  on the left as a 'pill' that shows summary graphs for: the count of how many objects (by types of <a class = 'link node' href='https://wiki.openstreetmap.org/wiki/Node'>nodes</a>, <a class = 'link way' href="https://wiki.openstreetmap.org/wiki/Way">ways</a> and <a class = 'link relation' href="https://wiki.openstreetmap.org/wiki/Relation">relations</a>) are currently in OSM{#if $data.osm.selected.areaName} in {$data.osm.selected.areaName}{:else}{#if yearsAgoLabel}; and  a trendline over the past {yearsAgoLabel}.{:else}.{/if}
             {/if}
             <p>More details and data about a Facet can be viewed by tapping on it. 
             </p>
-            <p>Connections between each Facet and the SDG indicators and targets they have been mapped to, are shown as links of smaller and larger widths, which indicate the strength of impact. The direction or polarity of impact are denoted by link colour: with green (positive) meaning that a higher Facet score should help towards achieving SDGs, while red (negative) links mean the opposite.
+            <p>Connections between each Facet and their mapped SDG indicators and targets are shown as links of smaller and larger widths, which indicate the strength of impact. The direction or polarity of impact are denoted by link colour: green (positive) means that a higher Facet score should help towards achieving SDGs, while red (negative) links mean the opposite.
             </p> 
-            <p>Only one SDG is shown at a time, however you can navigate through all of the SDGs to see how these Facets are connected to different areas of sustainable development.
+            <p>Only one SDG is shown at a time, however you can navigate through all of the SDGs to see how these Facets are connected to all areas of sustainable development.
             </p>
         </div>
         {/if}

@@ -186,7 +186,7 @@
         <div class = "title-container">
             <h1>Locate a city</h1>
             {#if !state.searchResult}
-            <p transition:fade>We'll start by finding the place you're looking for. This search finds looks for name matched administrative boundaries in OSM, so in theory you can look for cities of communities of wildly different sizes. And if it doesn't already exist, you might even consider even <a target = "_blank" href="https://wiki.openstreetmap.org/wiki/Contribute_map_data">contributing a boundary to OSM</a> yourself!</p>
+            <p transition:fade>We'll start by finding the place you're looking for. This search looks administrative boundaries in OSM, so in theory you can look for cities of communities of wildly different sizes. And if it doesn't already exist, you might even consider <a target = "_blank" href="https://wiki.openstreetmap.org/wiki/Contribute_map_data">contributing a boundary to OSM</a> yourself!</p>
             {/if}            
         </div>
 
@@ -204,7 +204,7 @@
             {#if $data.osm.query.searchInput}
             <div class="reminder" transition:fade>Click to run the search<ChevronUp/></div>
             {/if}
-            <div class = "note">Hint: try adding more detail to your search term after a comma (','). For example, "Melbourne, Australia" will return a more focused result than just "Melbourne". A more formal jurisdiction name like "City of Melbourne" might also improve your search results</div>
+            <div class = "note">Hint: try adding more detail to your search term after a comma (','). For example, "Melbourne, Australia" will return a more focused result than just "Melbourne". A more accurate jurisdiction name like "City of Melbourne" might also improve your search results</div>
             {/if}
         </div>
         <!--- SEARCH RESULTS VIEW -->
@@ -251,8 +251,7 @@
                     </div>
                     {#if state.searchResult.length > 1}
                     <div>
-                        <p>We found {@html state.searchResult.length} results for "{@html $data.osm.query.searchInput}" (that have a defined administrative 'boundary' in OSM). 
-                        You can change the selected location by tapping a new selection from this list (of <a target="_blank" href="https://nominatim.openstreetmap.org/ui/">Nomantim "display names"</a>).
+                        <p>We found {@html state.searchResult.length} results for "{@html $data.osm.query.searchInput}". You can change the selected location by tapping a new selection from this list (of <a target="_blank" href="https://nominatim.openstreetmap.org/ui/">Nomantim "display names"</a>).
                         </p>
                         <ol class ="search-other-container">
                             {#each state.searchResult as d, i (i) }
@@ -264,7 +263,7 @@
                         </ol>
                     </div>
                     {/if}
-                    <p>If the city or community you're looking for isn't listed you might like to try a new search term.
+                    <p>If the city or community you're looking for isn't listed you can try a new search term.
                     <div class = "reset-search-container">
                         <button  class = "reset-search-button"on:click={handleResetSearch} on:keypress={handleResetSearch}>Search again</button>
                     </div>

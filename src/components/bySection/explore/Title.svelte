@@ -16,18 +16,14 @@
         {/if}
     </div>
     <div class = "title-container">
-        <h1>See new facets of {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} the city {/if}</h1>
-        <p>Use this section to  <em>understand</em> the connections between Facets and SDGs and to <em>benchmark</em> this data.
-
+        <h1>See facets of {#if $data.osm.selected.areaName} {$data.osm.selected.areaName} {:else} the city {/if}</h1>
+        <p>Use this section to <em>understand</em> the connections between Facets and SDGs, and to <em>benchmark</em> this data.
         </p>
     </div>
-        <div class = "down-button-container">
-            <DownArrow handler={changeSubsection} target="facets" section="explore"/>
-        </div>
-
-
+    <div class = "down-button-container">
+        <DownArrow handler={changeSubsection} target="facets" section="explore"/>
+    </div>
 </section>
-
 
 
 <!-- STYLES-->
