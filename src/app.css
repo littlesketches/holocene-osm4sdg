@@ -1,0 +1,368 @@
+/***********************************/
+/****       GLOBAL STYLES       ****/
+/***********************************/
+
+:root {
+    font-family:                Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size:                  18px;
+    line-height:                28px;
+    font-weight:                400;
+
+    --max-text-width:           720px;
+    /* color-scheme:               light dark; */
+    /* color:                    rgba(255, 255, 255, 0.87); */
+    /* background-color:         #242424; */
+
+
+    /*** SDG PALETTES ***/
+    --sdg_01:               #e5243b;        /* Red              | No poverty                                */
+    --sdg_02:               #dda63a;        /* Mustard          | Zero hunger                               */
+    --sdg_03:               #4c9f38;        /* Kelly green      | Good health and well-being                */
+    --sdg_04:               #c5192d;        /* Dark red         | Quality education                         */
+    --sdg_05:               #ff3b21;        /* Red orange       | Gender equality                           */
+    --sdg_06:               #26bde2;        /* Bright blue      | Bright blue                               */
+    --sdg_07:               #fcc30b;        /* Yellow           | Affordable and clean energy               */
+    --sdg_08:               #a21942;        /* Burgundy red     | Decent work and economic growth           */
+    --sdg_09:               #fd6925;        /* Orange           | Industry, innovation and infrastructure   */
+    --sdg_10:               #dd1367;        /* Magenta          | Reduced inequalities                      */
+    --sdg_11:               #FD9D24;        /* Golden yellow    | Sustainable cities and communities        */
+    --sdg_12:               #bf8b2e;        /* Dark mustard     | Responsible consumption and production    */
+    --sdg_13:               #3f7e44;        /* Dark green       | Life below water                          */
+    --sdg_14:               #0a97d9;        /* Blue             | Life on land                              */
+    --sdg_15:               #56c02b;        /* Lime green       | Climate action                            */
+    --sdg_16:               #00689d;        /* Royal blue       | Peace, justice and strong institutions    */
+    --sdg_17:               #19486a;        /* Navy blue green  | Partnerships for the goals                */
+
+    --sdg_blue:             #009edb;
+    --blue_UN:              #5b92e5;
+
+    /*** APP PALETTES ***/
+    --primary01:            #041e42;
+    --primary01-light:      hsl(215, 89%, 96%);
+
+
+    --primary02:            hsl(342, 100%, 45%);       
+    --primary02-dark:            hsl(342, 100%, 25%);       
+    --primary02-light:     hsl(342, 100%, 99%);    
+
+    --primary03:             #00b7e0;      
+    --primary03-light:       #fafeff;  
+
+    --secondary01:          #edda09;
+    --secondary01-dark:      #bf8b2e;
+    --secondary02:          #4c9f38;
+    --secondary02-dark:      #3f7e44;
+
+    --positive:             rgb(6, 219, 145);
+    --negative:             rgb(230, 30, 30);
+
+    font-synthesis:             none;
+    text-rendering:             optimizeLegibility;
+    -webkit-font-smoothing:     antialiased;
+    -moz-osx-font-smoothing:    grayscale;    -webkit-text-size-adjust:   100%;
+
+}
+
+body {
+    margin:         0;
+    overflow:     hidden;
+}
+
+h1 {
+    font-size:      3.2em;
+    line-height:    1.1;
+}
+
+a {
+    font-weight:        500;
+    color:            #646cff;
+    text-decoration:    inherit;
+}
+
+a:hover {
+    color:          #535bf2;
+}
+em{
+    font-weight:        600;
+    font-style:         normal;
+}
+p {
+    margin-block-start: 0.5rem;
+    margin-block-end:   0.5rem;
+}
+
+/** APP **/
+#app{
+    display:        grid;
+    height:         100vh;
+    width:          100vw;
+    overflow:       hidden;
+}
+
+
+/** APP SECTION LAYOUT STYLING **/
+section.app-section{
+    grid-area:              1 / 1 / 2 / 2;
+    display:                grid;
+    min-height:             100vh;
+    grid-template-columns:  5vw 2.5vw 82.5vw;
+    transition:             all 1200ms;
+    position:               fixed;
+    top:                    0;
+}
+
+.rotation-wrapper{
+    transform-origin:       top left;
+    text-transform:         lowercase;
+}
+    /* Navigation sidebar */
+    .nav-container{
+        grid-area:              1 / 1 / 2 / 2;
+        cursor:                 pointer;        
+    }
+    .nav-container .rotation-wrapper{
+        transform:              rotate(-90deg) translate(-100%, 1vw);
+        display:                flex;
+        margin-top:             2.5vw;
+        justify-content:        flex-end;
+        font-size:              3vw;
+        line-height:            1;
+    }
+    .nav-container:hover div{
+        font-weight:           800;
+        text-align:            right;
+    }
+
+    /* Sub-menu */
+    .submenu-container{
+        grid-area:              1 / 2 / 2 / 3;
+        display:                flex;
+        width:                  0;
+    }
+    .submenu-container .rotation-wrapper{
+        transform:              rotate(-90deg) translate(-100%, 0.625vw);
+        display:                flex;
+        height:                 2.5vw;
+        margin-top:             2.5vw;;
+        line-height:            1;
+    }
+    .submenu-item{
+        font-size:              1.75vw;
+        margin-left:            2.5vw;
+        cursor:                 pointer;
+        text-align:             right;  
+        white-space:            nowrap;
+    }
+    .submenu-item:hover{
+        font-weight:            700;
+    }
+
+    /* Main section content pane (full page) */
+    .content-container{
+        grid-area:              1 / 2 / 2 / 4;
+        display:                grid;
+        height:                 100vh;
+        overflow-y:             scroll;
+    }
+    .title-container h1{
+        justify-self:           center;
+    }
+    /* With subsections */
+    .subsection{
+        display:                grid;
+        justify-items:          center;
+        min-height:             100vh;     
+        height:                 max-content;
+        padding-bottom:         20vh;
+    }
+    .subsection-content-wrapper{
+        grid-area:              1 / 1 / 2 / 2;
+        width:                  70%;
+    }
+
+    .subsection-bg-wrapper{
+        grid-area:              1 / 1 / 2 / 2;
+        display:                grid;
+        justify-items:          center;
+        align-items:            center;         
+        top:                    0;
+        width:                  100%;
+        height:                 100vh;
+        z-index:                -1;
+    }
+
+    /** Down button container base styling **/
+    .down-button-container{
+        display:                grid;
+        justify-content:        center;
+        align-content:          end;
+    }
+
+    /**** Form element styling ***/
+    label {
+        display: 			block;
+    }
+
+    input, button, select, textarea {
+        font-family: 		inherit;
+        font-size: 			inherit;
+        -webkit-padding: 	0.4em 0;
+        padding:	 		0.4em;
+        box-sizing: 		border-box;
+        border: 			1px solid;
+        border-radius: 		2px;
+        width:              100%;
+    }
+
+    input{
+        background-color:   transparent;
+        border:     		none;
+    }
+    input:disabled {
+        color:              #ddd;
+    }
+    select{
+        overflow:           hidden;
+        white-space:        pre;
+        text-overflow:      ellipsis;
+        -webkit-appearance: none;
+    }
+
+    button {
+        cursor: 			pointer;
+        width:          	100%;
+        color:          	var(--primary02);
+        background-color:   transparent;
+        border:             var(--primary02) solid 3px;
+        padding:        	1rem 0.5rem;
+        margin-top:     	0.75rem;
+        outline: 			none;
+        transition:  		all 200ms;
+        border-radius:      1vw;
+    }
+    button:hover{
+        background-color:	var(--primary02); 
+        font-weight:    	500;
+        color: 			    #fff
+    }
+    button:disabled {
+        color: 	            #ddd;
+    }
+    button:not(:disabled):active {
+        transform: 			scale(1.025)
+    }
+    button:focus {
+        border-color: 		#333;
+    }
+
+/***********************************************/
+/******* HACKS ******/
+/***********************************************/
+
+    /* COLLAPSIBLE PANE STYLING */
+	.collapse__header {
+        pointer-events:         bounding-box;
+        cursor:                 pointer;
+        display:                flex;
+        justify-content:        space-between;
+	    padding:                0.25rem 0rem;
+        border-bottom:          dotted 2px;
+        align-items:             end;
+        /* justify-content:         end; */
+	}
+    .collapse__header .toggle-icon{
+        margin-left:            0.5vw;
+	    transition:             all 200ms ease-in-out;
+        transform-origin:       50% 50%;
+    }
+    .collapse__header:hover{
+        text-decoration:        underline;
+    } 
+    .toggle-label{
+        font-size:              70%;
+        transform-origin:       50% 50%;
+	    transition:             all 500ms ease-in-out;
+    }
+    .selected .toggle-icon{
+        transform:              rotate(180deg);
+    }
+    .selected .toggle-label{
+        opacity:                0;
+    }
+
+	.collapse__body {
+	    padding:                1rem 0rem;
+        display:                grid;
+	}
+    .group-description{
+        font-size:              0.8rem;
+        font-weight:            300;
+        margin:                 0 0.75rem;
+    }
+
+
+
+/***********************************************/
+/******* RESPONSIVE STYLES / BREAKPOINTS  ******/
+/***********************************************/
+
+/* Media Query for Mobile and low res devices */
+@media (max-width: 767px) {
+    :root {
+        font-size:                  12px;
+        line-height:                18px;    
+    }
+    .subsection-content-wrapper{
+        max-width:              90%;
+    }
+    .submenu-item{
+        font-size:              2vw;
+    }
+}
+    
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px){
+    .subsection-content-wrapper{
+        width:                  70%;
+    }
+    .submenu-item{
+        font-size:              2vw;
+    }
+}
+    
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px){
+    .subsection-content-wrapper{
+        width:      70%;
+    }
+    .submenu-item{
+        font-size:              1.5vw;
+    }
+}
+    
+/* Media Query for Large screens */
+@media (min-width: 1281px) and (max-width: 1600px) {
+    :root {
+        font-size:                  24px;
+        line-height:                36px;    
+    }
+    .subsection-content-wrapper{
+        width:              60%;
+    }
+    .submenu-item{
+        font-size:              1.25vw;
+    }
+}
+
+/* Media Query for Very Large screens */
+@media (min-width: 1601px) {
+    :root {
+        font-size:                  32px;
+        line-height:                50px;    
+    }
+    .submenu-item{
+        font-size:                  1vw;
+    }
+
+}
+
