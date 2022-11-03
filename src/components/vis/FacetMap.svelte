@@ -82,12 +82,11 @@
         timeDomain = [...$schema.time.historicalYearsAgo].reverse().concat([0])
 
         facetTrendData = Object.entries($data.osm.response.byFacet).map( ([key, value]) => {
-
             return  { // Facet index ('id')
                 name:       value.name,
                 countData:  timeDomain.map( d => {
                     const label = d > 0 ?  `yearAgo-${d}` : 'today'
-                    const data = value[label][0].tags
+                    const data = value[label].tags
                     return {
                         areas:      +data.areas,
                         nodes:      +data.nodes,
@@ -101,7 +100,8 @@
     }
 
     if(dataState === 'currentData' || dataState === 'allData'){
-        currentData = Object.values($data.osm.response.byFacet).map(facetData => facetData.today[0].tags)
+
+        currentData = Object.values($data.osm.response.byFacet).map(facetData => facetData.today.tags)
         const maxFacetCount = d3.max(currentData.map(d => +d.total))
         facetBarScale = d3.scaleLinear()
             .domain([0,maxFacetCount])

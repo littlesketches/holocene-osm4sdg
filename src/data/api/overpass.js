@@ -16,7 +16,7 @@ export {
     queryOverpassByNode,
     getOverpassBoundaryByNode,
     queryOverpass,
-    createQuery, 
+    createQuery, createFacetQuery,
     createBuildingsQuery
 }
 
@@ -82,7 +82,7 @@ function createQuery(searchString, bbox, queryBody, output = 'meta', date = null
         searchString = searchString.slice(0, searchString.indexOf(",")).trim()
     }
 
-    // c. Return Overpass query with: 1) query 'settings', 2) Search area defintion 3) query 'body' (gathered), and 4 )output
+    // c. Return Overpass query with: 1) query 'settings', 2) Search area definition 3) query 'body' (gathered), and 4 )output
     return `
         [out:json][timeout:${timeout}]
         ${date ? `[date:"${date}"]`: ''}
@@ -90,6 +90,30 @@ function createQuery(searchString, bbox, queryBody, output = 'meta', date = null
         area[name="${searchString}"]->.searchArea;
         ${queryBody};   
         out ${output};`
+}; // end createQuery()
+
+
+// Function to create the a multiple facet query Overpass  query with area
+function createFacetQuery(searchString, bbox, queryBody, output = 'meta', date = null, facetData, timeout = 180){
+    // a. Modify the search string to only the first term (denoted as being before a comma)
+    if(searchString.indexOf(",") > 0){
+        searchString = searchString.slice(0, searchString.indexOf(",")).trim()
+    }
+
+    let query = `
+        [out:json][timeout:${timeout}]
+        ${date ? `[date:"${date}"]`: ''}
+        ${typeof bbox !== 'undefined' ? `[bbox:${bbox.toString()}];` : ';'}
+        area[name="${searchString}"]->.searchArea;
+        ${queryBody}`
+
+    for(let i = 0; i< facetData.length; i++){
+
+        query += `.f${i} out ${output};`
+    }
+
+    // c. Return Overpass query with: 1) query 'settings', 2) Search area defintion 3) query 'body' (gathered), and 4 )output
+    return query
 }; // end createQuery()
 
 
