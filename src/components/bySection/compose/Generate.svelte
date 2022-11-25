@@ -192,6 +192,7 @@
                         </div>  
                     {/if}
                 </div>
+
                 <div class = "data-button-container">
                     {#if !$ui.data.responseState.benchmarks}
                         {#if !$ui.data.loadingState.benchmarks}
@@ -212,7 +213,6 @@
                     {/if}
                 </div>
 
-         
                 <div class = "data-button-container"  class:disabled={!$data.osm.selected.areaNode}>
                     {#if !$ui.data.responseState.buildings}
                         {#if !$ui.data.loadingState.buildings}
@@ -284,19 +284,15 @@
         border-top:             dotted var(--primary02) 1.5px;
         line-height:            1.5;
         font-size:              80%;
+        padding:                1rem 0;
     }
+
     .disabled{
         pointer-events:     none;
     }
     .disabled  .data-description,
     .disabled  button{
         opacity:                0.5;
-    }
-    .data-button-container{
-        padding:                1rem 0;
-    }
-    .data-button-container * {
-        /* margin:             2.5vh ; */
     }
     .data-button{
         min-height:             15vh;
@@ -343,5 +339,19 @@
         margin-top:             5vh;
         display:                flex;
         justify-content:        center;
+    }
+
+
+    /* Media Query for low resolution  Tablets, Ipads */
+    @media (max-width: 767px) {
+        .data-button-container{
+            grid-template-columns:  1fr;
+        }
+        .data-button{
+            min-height:             7.5vh;
+        }
+        button{
+            margin-bottom:          1rem;
+        }
     }
 </style>

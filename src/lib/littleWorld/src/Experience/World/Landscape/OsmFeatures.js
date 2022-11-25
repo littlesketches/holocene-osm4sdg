@@ -145,7 +145,7 @@ console.log("NODE ELEMENT COUNT =", this.osmData.nodes.elements.length)
         }
     };
 
-    addMergedFeatures() {      // Merge geometries and add meshes
+    addMergedFeatures() {   // Merge geometries and add meshes
         // 1. Merge and add building geometries by building type
         let materialCounter = 0
 
@@ -470,7 +470,7 @@ console.log("NODE ELEMENT COUNT =", this.osmData.nodes.elements.length)
     };
 
     ///////////////////////////////////////
-    //// ON DESTROY  ////
+    //// ON DESTROY                    ////
     ///////////////////////////////////////
 
 
