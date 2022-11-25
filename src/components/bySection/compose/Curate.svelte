@@ -856,7 +856,7 @@
     }
 
 
-    /*********FACET MANAGEMENT OPTIONS CONTAINER*/
+    /*********FACET MANAGEMENT OPTIONS CONTAINER */
     .facet-management-container{
         display:            flex;
         justify-content:    space-between ;
@@ -889,9 +889,6 @@
         .goal-container{
             column-gap:             0vw;
             grid-template-columns:  none;
-        }
-        .indicator-map-cell{
-
         }
     }
     /* Media Query for Tablets Ipads portrait mode */
