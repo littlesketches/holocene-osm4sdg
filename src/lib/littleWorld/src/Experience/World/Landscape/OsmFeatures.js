@@ -20,7 +20,7 @@ import { analyseFeatures }  from '../../../DataModel/OSM/osmSchema.js'
 // Scoped variables
 let featuresSchema          // Used to reference features schema
 
-const geometries = {        // Object used for collating geometries by type to merge
+let geometries = {        // Object used for collating geometries by type to merge
     buildings: {
         all: []
     },             // Used for merging building geometries
@@ -29,12 +29,10 @@ const geometries = {        // Object used for collating geometries by type to m
 }
 
 
-const groups = {        // Object to hold THREEJS groups for organising scene
+let groups = {        // Object to hold THREEJS groups for organising scene
     buildings: {},
     ways: {}
 }
-
-const regionData = {}
 
 
 
@@ -48,7 +46,7 @@ export default class OsmFeatures {
         this.ref = new Experience()             // Reference to Experience singleton
         // this.ref.boundaryMesh = {}              // Add the boundary meshes so that they can be accessed for boundary checks outside OsmFeatures class
         this.osmData =  this.ref.data.osm
-
+console.log("NODE ELEMENT COUNT =", this.osmData.nodes.elements.length)
         this.materials = this.ref.materials
         this.settings = this.ref.settings
         this.colliders =  this.ref.interactions.colliders
@@ -147,7 +145,7 @@ export default class OsmFeatures {
         }
     };
 
-    addMergedFeatures() {      // Merge geometries and add meshes
+    addMergedFeatures() {   // Merge geometries and add meshes
         // 1. Merge and add building geometries by building type
         let materialCounter = 0
 
@@ -471,4 +469,25 @@ export default class OsmFeatures {
        this.ref.scene.add(mesh)
     };
 
+    ///////////////////////////////////////
+    //// ON DESTROY                    ////
+    ///////////////////////////////////////
+
+
+    destroy(){
+        // Reset to clear geometries from prior scenes
+        geometries = {       
+            buildings: {
+                all: []
+            },           
+            ways: {},
+            regions: {}
+        }
+
+
+        groups = {       
+            buildings: {},
+            ways: {}
+        }
+    };
 };

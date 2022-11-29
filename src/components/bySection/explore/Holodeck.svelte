@@ -49,19 +49,14 @@
                 window.experience.postProcessing.effects.halftonePass.enabled = false
                 window.experience.postProcessing.effects.filmPass.enabled = true
         }                  
-
     }
 
     function handleEffectChange(){
-        console.log(this.getAttribute('dir'))
         if(this.getAttribute('dir') === 'next' ){
             currentEffect = (currentEffect+1) % (Object.keys(effects).length)
         } else {
             currentEffect = currentEffect > 0 ? currentEffect -1 :  Object.keys(effects).length -1
         }
-    
-        console.log(currentEffect)
-
         effects[currentEffect]()
     };
 </script>
@@ -107,7 +102,9 @@
         </div>
     </div>
     <div class = "canvas-container">
+        {#if $ui.data.responseState.buildings}        
         <CityScape/>
+        {/if}
     </div>
     {/if}
 </section>

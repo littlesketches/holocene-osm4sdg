@@ -66,7 +66,6 @@
 
         $ui.data.loadingState.buildings = false     
         $ui.data.responseState.buildings = true     
-        $ui.state.vis.cityScape.render= true
     }; // end getOsmBuildingsData()
 
 
@@ -173,8 +172,7 @@
         <p>We're now ready to grab some data for {$data.osm.selected.areaName}! <i>Holocene</i> retrieves OSM via the <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a>. This is a wonderful open source service but it can be quite fickle! <i>Holocene</i> does its best to queue as series of smaller requests (and not make too many at once), but this can still result in some errors on the API side (...hopefully this can be improved in the future!). If it looks like a query is hanging <span class = "reset-queries" role="button" on:click={handleResetOptions} on:keydown={handleResetOptions}>click here to reset</span> the query options</p>
         {/if}
 
-        <div class = 'query-option-container'> 
-<!-- class:disabled={!$data.osm.selected.areaNode}> -->
+        <div class = 'query-option-container'> <!-- class:disabled={!$data.osm.selected.areaNode}> -->
             <h2 class = 'header'>Lets get some data!</h2>
             <div class = "data-buttons-container">
                 <div class = "data-button-container" class:disabled={!$data.osm.selected.areaNode}>
@@ -194,6 +192,7 @@
                         </div>  
                     {/if}
                 </div>
+
                 <div class = "data-button-container">
                     {#if !$ui.data.responseState.benchmarks}
                         {#if !$ui.data.loadingState.benchmarks}
@@ -214,7 +213,6 @@
                     {/if}
                 </div>
 
-         
                 <div class = "data-button-container"  class:disabled={!$data.osm.selected.areaNode}>
                     {#if !$ui.data.responseState.buildings}
                         {#if !$ui.data.loadingState.buildings}
@@ -231,7 +229,8 @@
                         </div>  
                     {/if}
                 </div>
-                <div class = "data-button-container" class:disabled={!$data.osm.selected.areaNode}>
+                
+                <div class = "data-button-container" class:disabled={!$data.osm.selected.areaNode || !$ui.data.responseState.facets }>
                     {#if !$ui.data.responseState.facetHistory}
                         {#if !$ui.data.loadingState.facetHistory}
                         <button class = "data-button"on:click={getFacetHistoricalData}>Get Facet historical data</button>{:else}<Loader/>  {/if}
@@ -285,19 +284,15 @@
         border-top:             dotted var(--primary02) 1.5px;
         line-height:            1.5;
         font-size:              80%;
+        padding:                1rem 0;
     }
+
     .disabled{
         pointer-events:     none;
     }
     .disabled  .data-description,
     .disabled  button{
         opacity:                0.5;
-    }
-    .data-button-container{
-        padding:                1rem 0;
-    }
-    .data-button-container * {
-        /* margin:             2.5vh ; */
     }
     .data-button{
         min-height:             15vh;
@@ -344,5 +339,19 @@
         margin-top:             5vh;
         display:                flex;
         justify-content:        center;
+    }
+
+
+    /* Media Query for low resolution  Tablets, Ipads */
+    @media (max-width: 767px) {
+        .data-button-container{
+            grid-template-columns:  1fr;
+        }
+        .data-button{
+            min-height:             7.5vh;
+        }
+        button{
+            margin-bottom:          1rem;
+        }
     }
 </style>

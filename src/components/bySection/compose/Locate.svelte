@@ -36,7 +36,7 @@
         if($data.osm.query.searchInput === ''){
             console.log('*** USER SUBMITTED EMPTY LOCATION SEARCH: not executed')
         } else {
-            console.log('>>> USER SUBMITTED LOCATION SEARCH FOR: ', $data.osm.selected.areaName)
+            console.log('>>> USER SUBMITTED LOCATION SEARCH FOR: ', $data.osm.query.searchInput)
             // Execute Nomatim search
             state.searching = true
             state.searchResult = await getNomantim($data.osm.query.searchInput)
@@ -51,7 +51,6 @@
 
             // Check whether boundary works for retrieving
             $data.osm.selected.useAreaSearch = await facetBoundaryTypeCheck( $data.osm.selected.areaName, $data.osm.selected.location.geom.overpassBounds)
-            console.log($data.osm.selected.useAreaSearch)
         }
     }; // end handleSearch()
 

@@ -23,9 +23,8 @@ let instance = null
 export default class Experience{
 
     constructor(_canvas, datGUI, osmData){
-
         // Singleton class
-        if(instance){ return instance }
+        if(instance){ return instance } else {console.log("Experienced being created...")}
         instance = this
         
         // Global access
@@ -88,12 +87,12 @@ export default class Experience{
     }
 
     destroy() {
+        console.log("DESTROYING the ThreeJS scene")
         this.sizes.off('resize')
         this.time.off('tick')
 
         // Traverse the whole scene
         this.scene.traverse((child) => {
-            // Test if it's a mesh
             if(child instanceof THREE.Mesh){
                 child.geometry.dispose()
 
@@ -109,10 +108,15 @@ export default class Experience{
             }
         })
 
-        this.camera.controls.dispose()
+
+        // this.camera.controls.dispose()
         this.renderer.instance.dispose()
 
-        if(this.debug.active)
+        if(this.debug.active){
             this.debug.ui.destroy()
+        }
+
+        this.world.destroy()
+        instance = null             // Remove the singleton 
     }
 }

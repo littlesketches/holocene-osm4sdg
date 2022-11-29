@@ -60,7 +60,7 @@ class DefaultFacets{
                 storyline:      'The availability of public transport infrastructure - particularly relative to city and/or population density, is an indictor of general access to mobility and the provision of public transport services.',
                 queryBody: `(
                     wr(area.searchArea)["public_transport"];
-                    nwr(area.searchArea)["services" ~ "bus|tram"];
+                    nwr(area.searchArea)["service" ~ "bus|tram"];
                 )`,
                 indicators: [
                     { code: "11.2.1",    impact: 2 },

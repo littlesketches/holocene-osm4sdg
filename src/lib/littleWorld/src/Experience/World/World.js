@@ -54,4 +54,9 @@ export default class World{
             this.ref.debug.stats.update()
 
     }
+
+    destroy(){
+        console.log('Need to remove the osmFeatures')
+        this.osmFeatures.destroy()
+    }
 }
