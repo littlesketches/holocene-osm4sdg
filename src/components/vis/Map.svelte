@@ -10,9 +10,9 @@
 
     // Tile URL options
     const tileURLs = {
-        lightGrey:      'http://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', // Light grey
-        worldImagery:   'http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',                // World imagery grey   
-        light:          'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+        lightGrey:      'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', // Light grey
+        worldImagery:   'https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',                // World imagery grey   
+        light:          'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
         toner:          'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png'
     }
 

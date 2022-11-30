@@ -25,7 +25,7 @@
     </div>
 
     <div class = "down-button-container">
-        <DownArrow handler={changeSubsection} target="guide"/>
+        <DownArrow handler={changeSubsection} target="guide" section="home"/>
     </div>
 </section>
 

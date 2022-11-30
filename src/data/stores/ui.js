@@ -41,6 +41,7 @@ export const ui = writable({
                 }
             },
             cityScape: {        // For 3D city scape scene
+                render:             false,
                 orbitControls:      true,       // Boolean for enabling orbit controls
                 autoRotate:         false,
             },

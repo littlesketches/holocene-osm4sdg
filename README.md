@@ -49,6 +49,7 @@ The hope is that mode work will be done to improve the application in the not to
 Minor
 - [ ] Add a referrer for the Nomantim request
 - [ ] Add custom benchmarks (city selector)
+- [ ] Add a way to save/load retrieved Facet data   
 - [ ] Improve mobile and a11y support
 
 

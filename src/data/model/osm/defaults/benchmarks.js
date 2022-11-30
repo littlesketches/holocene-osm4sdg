@@ -7,51 +7,7 @@ class DefaultBenchmarks{
 
     constructor(){
         const shuffled = [...candidates].sort(() => 0.5 - Math.random());
-
-        return shuffled.slice(0, 4)
-        return [
-            {
-                areaName:   'Blantyre',
-                country:    'Malawi',
-                node:       7347100 
-            }, 
-            {
-                areaName:   'Cagayan de Oro',
-                country:    'Philippines',
-                node:       2404870 
-            },
-            {
-                areaName:   'Geneva',
-                country:    'Switzerland',
-                node:       1685488 
-            }, 
-            {
-                areaName:   'Kathmandu',
-                country:    'Nepal',
-                node:       4583125 
-            },
-            {
-                areaName:   'Port Au Prince',
-                country:    'Haiti',
-                node:       387318 
-            }, 
-            {
-                areaName:   'Ofunato',
-                country:    'Japan',
-                node:       963792 
-            }, 
-            {
-                areaName:   'Manhattan',
-                country:    'United States',
-                node:       8398124
-            }, 
-            {
-                areaName:   'Beirut Governorate',
-                country:    'Lebanons',
-                node:       316552
-            }
-        ]
-
+        return shuffled.slice(0, 3)
     }
 }
 

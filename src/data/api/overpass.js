@@ -76,7 +76,7 @@ async function queryOverpass(query, dataReturn = 'elements'){
 
 
 // Function to create the general Overpass  query with area
-function createQuery(searchString, bbox, queryBody, output = 'meta', date = null, timeout = 180){
+function createQuery(searchString, bbox, queryBody, output = 'meta', date = null, timeout = 300){
     // a. Modify the search string to only the first term (denoted as being before a comma)
     if(searchString.indexOf(",") > 0){
         searchString = searchString.slice(0, searchString.indexOf(",")).trim()
@@ -94,7 +94,7 @@ function createQuery(searchString, bbox, queryBody, output = 'meta', date = null
 
 
 // Function to create the a multiple facet query Overpass  query with area
-function createFacetQuery(searchString, bbox, queryBody, output = 'meta', date = null, facetData, timeout = 180){
+function createFacetQuery(searchString, bbox, queryBody, output = 'meta', date = null, facetData, timeout = 300){
     // a. Modify the search string to only the first term (denoted as being before a comma)
     if(searchString.indexOf(",") > 0){
         searchString = searchString.slice(0, searchString.indexOf(",")).trim()
