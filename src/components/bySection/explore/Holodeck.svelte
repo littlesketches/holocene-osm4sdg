@@ -1,7 +1,6 @@
 <!-- BEYOND DATA / THREEJS SCENE COMPONENT -->
 <script>
     import CityScape            from '../../vis/CityScape.svelte'
-    import DownArrow            from '../../shared/DownArrow.svelte'
     import SdgDivider            from '../../shared/SdgDivider.svelte'
     import UpArrow              from '../../shared/UpArrow.svelte'
     import ArrowLeft            from "svelte-material-icons/ArrowLeft.svelte";
