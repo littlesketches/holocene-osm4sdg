@@ -82,7 +82,7 @@
                 </thead>
                 <tbody>
                     {#each $schema.data.osm.facets as facetObj, i}
-                    {@const cityScore = +$data.osm.response.byFacet[i].today[0].tags.total / ($data.osm.selected.location.data.area / 1000000)}
+                    {@const cityScore = +$data.osm.response.byFacet[i].today.tags.total / ($data.osm.selected.location.data.area / 1000000)}
                     {@const baseRadius = 25}
                     {@const viewBox = `0 0 ${baseRadius * 6} ${baseRadius * 6}`}
                     <tr class ="facet-row" >

@@ -30,7 +30,7 @@
     </div>
 
     <div class = "down-button-container">
-        <DownArrow handler={changeSubsection} target="data"/>
+        <DownArrow handler={changeSubsection} target="data" section="home"/>
     </div>
 </section>
 

@@ -66,6 +66,7 @@
 
         $ui.data.loadingState.buildings = false     
         $ui.data.responseState.buildings = true     
+        $ui.state.vis.cityScape.render = true     
     }; // end getOsmBuildingsData()
 
 
@@ -169,7 +170,7 @@
         <p><i>Holocene</i> will query the <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a> to gather Facet data. However before this can happen, you'll need to select a city using the <i>Locate</i> section above. A preview of of the data query options is shown below. 
         </p>
         {:else}
-        <p>We're now ready to grab some data for {$data.osm.selected.areaName}! <i>Holocene</i> retrieves OSM via the <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a>. This is a wonderful open source service but it can be quite fickle! <i>Holocene</i> does its best to queue as series of smaller requests (and not make too many at once), but this can still result in some errors on the API side (...hopefully this can be improved in the future!). If it looks like a query is hanging <span class = "reset-queries" role="button" on:click={handleResetOptions} on:keydown={handleResetOptions}>click here to reset</span> the query options</p>
+        <p>We're now ready to grab some data for {$data.osm.selected.areaName}! <i>Holocene</i> retrieves OSM via the <a target="_blank" href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a>. This is a wonderful open source service but it can be quite fickle! <i>Holocene</i> does its best to queue as series of smaller requests (and not make too many at once), but this can still result in some errors on the API side; or sometimes it just responds much slower than other times. Hopefully this can be improved in the future. If it looks like a query is hanging <span class = "reset-queries" role="button" on:click={handleResetOptions} on:keydown={handleResetOptions}>click here to reset</span> the query options</p>
         {/if}
 
         <div class = 'query-option-container'> <!-- class:disabled={!$data.osm.selected.areaNode}> -->
@@ -198,7 +199,7 @@
                         {#if !$ui.data.loadingState.benchmarks}
                         <button class = "data-button"on:click={getFacetBenchmarkData}>Get Facet benchmark data</button>{:else} <Loader/>{/if}
                         <div class ="data-description">
-                            <p>This query will retrieve Facet data for  other locations to provide comparison data. The benchmarking feature is discussed in the <i>Explore</i> section. For now, a default of 4 other benchmark cities are requested, so this query should take about x4 the time of the "Get Facet data" query!.
+                            <p>This query will retrieve Facet data for  other locations to provide comparison data. The benchmarking feature is discussed in the <i>Explore</i> section. For now, a default of 3 other benchmark cities are requested, so this query should take about x4 the time of the "Get Facet data" query!.
                             </p>
                         </div>
                     {:else}

@@ -36,7 +36,7 @@
         {:else}
         <p>This interactive visualisation is designed to provide an overview of the volumes and trends for {#if $schema.data.osm.facets.length > 1} all {$schema.data.osm.facets.length} configured Facets {:else} the one configured data facet{/if}, together with the connections between Facets and each SDG, target and indicator. 
         </p>    
-        <p class = "note">Please note that Facet data visualisation components require a location to be selected and for data be retrieved from the <i>Compose</i> section.</p>
+        <p class = "note">Please note that Facet data visualisation components require a location to be selected and for data be retrieved from the <i>Compose</i> section. Retrieved data will be shown.</p>
         {/if}
         <div id = "howToRead" class="collapse__header" type="button" 
             class:selected="{paneVisbility.howToRead}" on:click={togglePane}  on:keydown={togglePane}>
@@ -45,7 +45,7 @@
         </div>
         {#if paneVisbility.howToRead}
         <div class = "collapse__body"  transition:slide>    
-            <p>This graphic is designed for larger screens - there's a quite a bit going on! Each Facet is presented  on the left as a 'pill' that shows summary graphs for: the count of how many objects (by types of <a class = 'link node' href='https://wiki.openstreetmap.org/wiki/Node'>nodes</a>, <a class = 'link way' href="https://wiki.openstreetmap.org/wiki/Way">ways</a> and <a class = 'link relation' href="https://wiki.openstreetmap.org/wiki/Relation">relations</a>) are currently in OSM{#if $data.osm.selected.areaName} in {$data.osm.selected.areaName}{:else}{#if yearsAgoLabel}; and  a trendline over the past {yearsAgoLabel}.{:else}.{/if}
+            <p>This graphic is designed for larger screens - there's a quite a bit going on! Each Facet is presented  on the left as a 'pill' that shows summary graphs for: the count of how many objects (by types of <a class = 'link node' href='https://wiki.openstreetmap.org/wiki/Node'>nodes</a>, <a class = 'link way' href="https://wiki.openstreetmap.org/wiki/Way">ways</a> and <a class = 'link relation' href="https://wiki.openstreetmap.org/wiki/Relation">relations</a>) are currently in OSM {#if $data.osm.selected.areaName} in {$data.osm.selected.areaName}{:else}{#if yearsAgoLabel}; and  a trendline over the past {yearsAgoLabel}.{:else}.{/if}
             {/if}
             <p>More details and data about a Facet can be viewed by tapping on it. 
             </p>
