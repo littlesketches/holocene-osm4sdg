@@ -102,7 +102,7 @@
                         </td>
                         {#if $data.osm.response.benchmarks}
                         {#each $data.osm.response.benchmarks as d }
-                            {@const facetCount = +d.facetData[i].today[0].tags.total}
+                            {@const facetCount = +d.facetData[i].today.tags.total}
                             {@const area = +d.calculatedArea/1000000}
                             {@const bmScore = facetCount / area}
                             {@const minScore = cityScore === 0 ? 0.01 : cityScore}
