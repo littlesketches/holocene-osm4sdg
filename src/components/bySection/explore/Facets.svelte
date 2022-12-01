@@ -31,12 +31,13 @@
     <div class = "subsection-content-wrapper">
         <h1>SDG Facet map</h1>
         {#if $schema.data.osm.facets.length === 0} 
-         <p>WHen Facets are set up, this interactive visualisation will show an overview of the volumes and trends for modelled Facets.
+        <p>WHen Facets are set up, this interactive visualisation will show an overview of the volumes and trends for modelled Facets.
         </p>
+        <p class = "note">Please note that Facet data visualisation components require a location to be selected and for data be retrieved from the <i>Compose</i> section. Retrieved data will be shown.</p>
+
         {:else}
         <p>This interactive visualisation is designed to provide an overview of the volumes and trends for {#if $schema.data.osm.facets.length > 1} all {$schema.data.osm.facets.length} configured Facets {:else} the one configured data facet{/if}, together with the connections between Facets and each SDG, target and indicator. 
         </p>    
-        <p class = "note">Please note that Facet data visualisation components require a location to be selected and for data be retrieved from the <i>Compose</i> section. Retrieved data will be shown.</p>
         {/if}
         <div id = "howToRead" class="collapse__header" type="button" 
             class:selected="{paneVisbility.howToRead}" on:click={togglePane}  on:keydown={togglePane}>

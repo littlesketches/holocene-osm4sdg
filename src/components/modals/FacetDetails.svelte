@@ -30,7 +30,7 @@
     if($ui.state.vis.facetSDGVis.dataState !== 'noData'){
         facetData = $data.osm.response.byFacet[$ui.modal.facetIndex]
         if($ui.state.vis.facetSDGVis.dataState === 'allData'){
-            const sortedCounts = Object.values(facetData.today[0].tags).map(d => +d).sort((a, b) => a - b)
+            const sortedCounts = Object.values(facetData.today.tags).map(d => +d).sort((a, b) => a - b)
             maxCount = sortedCounts[sortedCounts.length -2]
 
         }
