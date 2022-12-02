@@ -48,7 +48,7 @@
                     name:       value.name,
                     countData:  yearsAgoArray.map( d => {
                         const label = d > 0 ?  `yearAgo-${d}` : 'today'
-                        const data = value[label][0].tags
+                        const data = value[label].tags
                         return {
                             areas:      +data.areas,
                             nodes:      +data.nodes,
@@ -154,10 +154,10 @@
         {#if $ui.state.vis.facetSDGVis.dataState !== 'noData'}
             <div class = 'item-container'>
                 <div class ='info-label'>OpenStreetMap objects</div>            
-                <div class ='score-title'>{@html d3.format(',')(+facetData.today[0].tags.total)}</div>
+                <div class ='score-title'>{@html d3.format(',')(+facetData.today.tags.total)}</div>
                 <div class = 'bar-chart-container '>
                     {#each osmObjects as name, i}
-                    {@const count = facetData.today[0].tags[name.toLowerCase()]}
+                    {@const count = facetData.today.tags[name.toLowerCase()]}
                     <div class = 'bar-container {name.toLowerCase()}'>
                         <div class = 'bar-label'>{@html name} ({@html d3.format(',')(+count)})</div>
                         <div class = "bar" style = "width:{count / maxCount * 100}%"></div>

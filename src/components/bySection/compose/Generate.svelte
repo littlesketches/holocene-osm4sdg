@@ -108,11 +108,13 @@
     async function getFacetBenchmarkData(){
         $ui.data.loadingState.benchmarks = true
         $data.osm.response.benchmarks = []
+console.log($schema.data.osm.benchmarks)
         for( const obj of $schema.data.osm.benchmarks){
             console.log(`Getting facet data for ${obj.areaName}, nodeID of ${obj.node} `)
 
-            const boundaryNode =  await getOverpassBoundaryByNode(obj.node), 
-                osmPointsArray = boundaryNode.elements[0].members       
+            const boundaryNode =  await getOverpassBoundaryByNode(obj.node)
+console.log(boundaryNode)
+            const osmPointsArray = boundaryNode.elements[0].members       
                         .filter(d => d.type === 'way' && d.role === 'outer')
                         .map(d => d.geometry.map(e => Object.values(e))),
                 flattenedPointsArray = fixPathDirection(osmPointsArray).flat(),

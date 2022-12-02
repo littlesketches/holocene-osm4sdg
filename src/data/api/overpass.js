@@ -35,14 +35,24 @@ async function getOverpassBoundaryByNode(nodeID){
             console.log(`~~~ Overpass request for boundary node took ${(Date.now() - startTime)}ms `, data)
             return data       // Return (first) relation node as the boundary (note: should be only one relation for a node)
         }).catch( err => {
-            console.log(err)
-            return null
+            console.log(err)  
+
+            console.log('Retrying...')
+            return fetch(`https://overpass-api.de/api/interpreter?data=${query}`)
+                .then((response) => response.json() )
+                .then((data) => {
+                    console.log(`~~~ Overpass request for boundary node took ${(Date.now() - startTime)}ms `, data)
+                    return data       // Return (first) relation node as the boundary (note: should be only one relation for a node)
+                }).catch( err => {
+                    console.log(err)
+                })
         })
-}; // end queryOverpassByNode()
+}; // end getOverpassBoundaryByNode()
 
 
 // Function to get OSM data from nodeID via Overpass API
 async function queryOverpassByNode(nodeID, output ='geom'){
+    let retries = 0
     const startTime = Date.now()
     const query = `
         [out:json][timeout:180];
@@ -57,11 +67,14 @@ async function queryOverpassByNode(nodeID, output ='geom'){
         .then((data) => {
             console.log(`...request ${(Date.now() - startTime)}ms and returned:`, data)
             return data.elements.filter( d => d.type === 'relation')[0]         // Return (first) relation node as the boundary (note: should be only one relation for a node)
-        });
+        }).catch((err) => {
+            console.log(err)
+            return null
+        })
 }; // end queryOverpassByNode()
 
 
-// General unction to get OSM data with query via Overpass API
+// General function to get OSM data with query via Overpass API
 async function queryOverpass(query, dataReturn = 'elements'){
     const startTime = Date.now()
     console.log('Making Overpass request...', query)
@@ -71,7 +84,10 @@ async function queryOverpass(query, dataReturn = 'elements'){
         .then((data) => {
             console.log(`Request took ${(Date.now() - startTime)}ms`, data)
             return dataReturn === 'elements' ? data.elements : data
-        });
+        }).catch((err) => {
+            console.log(err)
+            return null
+        })
 }; // end queryOverpass()
 
 

@@ -51,7 +51,7 @@
 
     <div class= "benchmark-table-container">
         {#if $data.osm.selected.areaName}
-            {#if  $data.osm.response.benchmarks}
+            {#if  $data.osm.response.benchmarks && $data.osm.response.byFacet}
             <table>
                 <!-- TABLE HEADER SECTION -->
                 <thead>

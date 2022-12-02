@@ -23,17 +23,21 @@ async function facetModelCurrent(facetData, areaName, bounds, useArea) {
 
     // Query for the current time (most important!)
     const query = createFacetQuery(areaName, bounds, queryBody, 'count', null, facetData)
-    return  await queryOverpass(query).then( res => {
-        res.forEach((d, i) => {
-            obj[i] = {                      
-                name:       facetData[i].name,
-                today:      res[i]     
-            }
-        })
-        console.log(`-------- ALL FACETS DONE ------------`)
-        console.log(`...request took ${(Date.now() - startTime)}ms)`)
-        return obj
-    })  
+    return  await queryOverpass(query)
+        .then( res => {
+            res.forEach((d, i) => {
+                obj[i] = {                      
+                    name:       facetData[i].name,
+                    today:      res[i]     
+                }
+            })
+            console.log(`-------- ALL FACETS DONE ------------`)
+            console.log(`...request took ${(Date.now() - startTime)}ms)`)
+            return obj
+        }).catch( err => {
+            console.log(err)
+            return null
+        })  
 }; // End facetModelCurrent
 
 

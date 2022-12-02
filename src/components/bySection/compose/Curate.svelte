@@ -758,7 +758,7 @@
 
     .facet-label{
         line-height:            1.1;
-        padding:                0.25rem 0;
+        padding:                0.25rem 0.1rem;
     }
     .facet-header-icon,
     .facet-edit-icon{
