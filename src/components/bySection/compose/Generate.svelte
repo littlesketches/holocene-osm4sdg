@@ -201,7 +201,7 @@ console.log(boundaryNode)
                         {#if !$ui.data.loadingState.benchmarks}
                         <button class = "data-button"on:click={getFacetBenchmarkData}>Get Facet benchmark data</button>{:else} <Loader/>{/if}
                         <div class ="data-description">
-                            <p>This query will retrieve Facet data for  other locations to provide comparison data. The benchmarking feature is discussed in the <i>Explore</i> section. For now, a default of 3 other benchmark cities are requested, so this query should take about x4 the time of the "Get Facet data" query!.
+                            <p>This query will retrieve Facet data for  other locations to provide comparison data. The benchmarking feature is discussed in the <i>Explore</i> section. For now, a default of 3 other benchmark cities are requested, so this query should take about x3 the time of the "Get Facet data" query!.
                             </p>
                         </div>
                     {:else}

@@ -32,15 +32,12 @@ export default class World{
                 this.fireflies = new Fireflies()
             }    
 
-            // Other elements ()
-
             // Environment
             this.lighting = new Lighting()
             // this.sky = new SkyClass()          // Sky must be added after lighting as it controls the sun directional light
             this.fog = new Fog()
 
         })
-
     }
 
     // Update animated elements

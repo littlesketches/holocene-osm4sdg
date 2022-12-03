@@ -47,18 +47,17 @@ The hope is that mode work will be done to improve the application in the not to
 
 ## (Known) To dos
 Minor
-- [ ] Add a referrer for the Nomantim request
+- [x] Add a referrer for the Nominatim request => the default referrer ("about:client") and referrerPolicy ("strict-origin-when-cross-origin") satisfy  the Nominatim policy. 
 - [ ] Add custom benchmarks (city selector)
 - [ ] Add a way to save/load retrieved Facet data   
 - [ ] Improve mobile and a11y support
 
 
-
 Major
-- [ ] Enhance the Facet Composer
-- [ ] ThreeJS scene data visualisation
+- [ ] Enhance the Facet Composer: 
+- [ ] ThreeJS scene data visualisation: incorporate data visualisaitons
 - [ ] Incorporate national SDG datasets as context (with visualisations enhancements)
-- [ ] Build on the musical theme...
+- [ ] Build on the musical instrument theme...
 
 
 

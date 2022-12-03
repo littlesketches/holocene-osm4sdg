@@ -1,4 +1,4 @@
-<!-- COMPONENT FOR OSM LOCATION SEARCH (NOMANTIM) AND GETTING GEOMETRY/BOUNDARY NODE (OVERPASS)-->
+<!-- COMPONENT FOR OSM LOCATION SEARCH (Nominatim) AND GETTING GEOMETRY/BOUNDARY NODE (OVERPASS)-->
 <script>
 	import { fade, fly }            from 'svelte/transition';
     import * as geolib              from 'geolib'
@@ -14,13 +14,13 @@
     import { changeSubsection }     from "../../../lib/utils/nav.js";
     import { fixPathDirection }     from "../../../lib/utils/helpers.js";
     import { OsmStore }             from '../../../data/model/osm/defaults/osmStore.js'
-    import { getNomantim }          from "../../../data/api/nomantim.js"
+    import { getNominatim }          from "../../../data/api/nominatim.js"
     import { getOverpassBoundaryByNode }    from "../../../data/api/overpass.js"
     import { facetBoundaryTypeCheck }       from "../../../data/model/osm/facetModel.js"
 
 
     // Dynamic variables 
-    $: state = {     // State for Nomantim location search
+    $: state = {     // State for Nominatim location search
         searching:              false,
         searchResult:           null,
         searchSelectionIndex:   0,       // Index of search result array
@@ -39,12 +39,12 @@
             console.log('>>> USER SUBMITTED LOCATION SEARCH FOR: ', $data.osm.query.searchInput)
             // Execute Nomatim search
             state.searching = true
-            state.searchResult = await getNomantim($data.osm.query.searchInput)
+            state.searchResult = await getNominatim($data.osm.query.searchInput)
             state.searching = false
 
             cityName = state.searchResult[0].display_name
             // Store Nomatim for first (highest ranked) result
-            await storeNomatinData(state.searchResult[0])
+            await storeNominatimData(state.searchResult[0])
 
             // Execute OverPass node query for first (highest ranked) result (triggers UI update)
             await getOverpassGeom(state.searchResult[0])
@@ -62,7 +62,7 @@
         state.searchSelectionIndex      = null   
         cityName                        = null
         $ui.state.vis.cityScape.render  = null
-        clearNomatinData()
+        clearNominatimData()
         clearOverpassGeomData()
 
         $ui.data = {
@@ -95,28 +95,28 @@
 
 
     // HELPER FUNCTIONS
-        // Function to store Nomantim (search bar) data for 'selected' result
-        async function storeNomatinData(nomObj){
+        // Function to store Nominatim (search bar) data for 'selected' result
+        async function storeNominatimData(nomObj){
             $data.osm.selected.areaNode = nomObj
             $data.osm.selected.areaName = nomObj.display_name.slice(0, nomObj.display_name.indexOf(","))
             $data.osm.selected.location.meta.nomamtimName = nomObj.display_name
             $data.osm.selected.location.meta.address = nomObj.address
 
             $data.osm.selected.location.geom.center = { lat: nomObj.lat, lon: nomObj.lon }
-            $data.osm.selected.location.geom.nomantimBounds = nomObj.boundingBox
-            console.log(`~~~ Stored Nomantim object data for ${$data.osm.selected.areaName}`, $data.osm.selected )
+            $data.osm.selected.location.geom.NominatimBounds = nomObj.boundingBox
+            console.log(`~~~ Stored Nominatim object data for ${$data.osm.selected.areaName}`, $data.osm.selected )
         };
 
-        // Function to clear Nomantim data in $data store
-        function clearNomatinData(nomObj){
+        // Function to clear Nominatim data in $data store
+        function clearNominatimData(nomObj){
             $data.osm.selected.areaNode = null
             $data.osm.selected.areaName = null
             $data.osm.selected.location.meta = new OsmStore().selected.location.meta
 
             $data.osm.selected.location.geom.center = null
-            $data.osm.selected.location.geom.nomantimBounds = null
+            $data.osm.selected.location.geom.NominatimBounds = null
 
-            console.log('*** STORED NOMANTIM DATA CLEARED')
+            console.log('*** STORED Nominatim DATA CLEARED')
         };
 
         // Function to query Overpass and store the geometry data from a node 
@@ -250,7 +250,7 @@
                     </div>
                     {#if state.searchResult.length > 1}
                     <div>
-                        <p>We found {@html state.searchResult.length} results for "{@html $data.osm.query.searchInput}". You can change the selected location by tapping a new selection from this list (of <a target="_blank" href="https://nominatim.openstreetmap.org/ui/">Nomantim "display names"</a>).
+                        <p>We found {@html state.searchResult.length} results for "{@html $data.osm.query.searchInput}". You can change the selected location by tapping a new selection from this list (of <a target="_blank" href="https://nominatim.openstreetmap.org/ui/">Nominatim "display names"</a>).
                         </p>
                         <ol class ="search-other-container">
                             {#each state.searchResult as d, i (i) }
